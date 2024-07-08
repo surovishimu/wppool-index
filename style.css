@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'Nantes';
+    src: url('fonts/Nantes-Regular.woff2') format('woff2'),
+        url('fonts/Nantes-Regular.woff') format('woff'),
+        url('fonts/Nantes-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Messina Sans';
+    src: url('fonts/MessinaSans-Regular.woff2') format('woff2'),
+        url('fonts/MessinaSans-Regular.woff') format('woff'),
+        url('fonts/MessinaSans-Regular.ttf') format('truetype'),
+        url('fonts/MessinaSans-Light.ttf') format('truetype'),
+        url('fonts/MessinaSans-Light.woff') format('woff'),
+        url('fonts/MessinaSans-Light.woff2') format('woff2');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.bg-custom {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bg-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/background.svg') no-repeat center center;
+    background-size: contain;
+    z-index: -2;
+}
+
+/* tab */
+.tab-button {
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+.tab-icon {
+    margin-right: 4px;
+}
+
+.active-tab {
+    background-color: #2042B6 !important;
+    color: #EFF3F6;
+    border-radius: 10px;
+}
+
+.bg-eff3f6 {
+    background-color: #EFF3F6;
+}
+
+.active-tab .tab-icon {
+    content: '-';
+}
+
+.parallelogram {
+    width: 18px;
+    height: 35px;
+    transform: skew(-30deg);
+}
+
+/* slider */
+
+.slider {
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.2s ease-in-out;
+}
+
+.slider-item {
+    flex: 0 0 calc(50% - 90px);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.slider-item img {
+    width: 500px;
+    border-radius: 8px;
+}
+.bg-custom2 {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bg-custom2::before {
+    content: '';
+    position: absolute;
+    top: 45px;
+    left: 150px;
+    width: 100%;
+    height: 100%;
+    background: url('images/slider-bg.png') no-repeat center center;
+    background-size:contain;
+    z-index: -2;
+}
+
+@media (max-width: 425px) {
+    .slider-item {
+        flex: 0 0 100%; 
+    }
+}

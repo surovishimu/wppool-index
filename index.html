@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPPOOL</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <!-- tailwind css link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.4.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- js chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .font-nantes {
+            font-family: 'Nantes', sans-serif;
+        }
+
+        .font-messina {
+            font-family: 'Messina Sans', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="max-w-screen-xl mx-auto bg-[#EFF3F6]">
+
+
+    <!-- banner section -->
+    <section class="bg-[#2042B6] bg-custom px-4 mx-10 font-nantes pb-10 relative">
+        <!-- navbar -->
+        <nav class="p-4 relative">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center w-[200px] h-[34px]">
+                    <img src="/images/logo.png" alt="Company Logo" class="w-14 mr-2">
+                    <img class="w-28 -ml-2" src="/images/companyName.png" alt="Company Name">
+                </div>
+
+                <div class="flex items-center space-x-7 relative">
+                    <button aria-label="Share"
+                        class="md:flex items-center justify-center hidden text-white border border-white rounded-full h-10 w-10 p-5">
+                        <i class="fa-solid fa-share-nodes text-xl"></i>
+                    </button>
+                    <button class="text-white border border-white rounded-3xl text-xs p-3 md:block hidden">
+                        Download the 2024 Report
+                    </button>
+                    <button aria-label="Menu" class="flex items-center text-white" id="menuButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="inline-block h-10 w-10 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="menuItems"
+                class="hidden space-y-3 mt-3 bg-white p-4 border border-gray-300 rounded-lg shadow-lg absolute right-0 top-0 md:w-96 w-80">
+                <div class="flex justify-center items-center gap-6 -ml-16">
+                    <button aria-label="Close" class="absolute top-6 right-2 text-black" id="closeButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12">
+                            </path>
+                        </svg>
+                    </button>
+                    <button aria-label="Share"
+                        class="text-white border bg-[#AFCD80] rounded-full h-11 w-11 p-2 flex items-center justify-center">
+                        <i class="fa-solid fa-share-nodes text-xl"></i>
+                    </button>
+                    <button class="text-white bg-[#2042B6] rounded-3xl text-xs p-3 ">
+                        Download the 2024 Report
+                    </button>
+                </div>
+                <div class="flex flex-col items-start mt-4">
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">The WPPOOL
+                        Index</a>
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">All
+                        Companies</a>
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">Potential
+                        Future Listings</a>
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">State of
+                        USA</a>
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">Stories &
+                        Ideas</a>
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">About
+                        WPPOOL</a>
+                    <a href="#" class="text-black text-sm font-sans hover:bg-gray-100 p-2 rounded w-full">WPPOOL
+                        Portfolio Companies</a>
+                    <a href="#" class="text-[#2042B6] hover:bg-gray-100 p-2 rounded w-full">Visit WPPOOL</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- banner -->
+        <div class="mt-28 flex w-full">
+            <div class="space-y-10 w-2/6 md:pl-10 pl-2">
+                <div class=" text-white tracking-wide">
+                    <h1 class="text-2xl">60</h1>
+                    <h5 class="text-xs ">Companies</h5>
+                </div>
+                <div class=" text-white tracking-wide">
+                    <h1 class="text-2xl">$100B</h1>
+                    <h5 class="text-xs">Market cap</h5>
+                </div>
+                <div class=" text-white tracking-wide">
+                    <h1 class="text-2xl">3.5x</h1>
+                    <h5 class="text-xs">Revenue multiple</h5>
+                </div>
+                <div class=" text-white tracking-wide">
+                    <h1 class="text-2xl">60%</h1>
+                    <h5 class="text-xs">LTM avg. revenue growth rate</h5>
+                </div>
+            </div>
+
+            <div class="text-white w-8/12 mt-10 xl:-ml-52 lg:-ml-40 md:-ml-24 -ml-0 md:text-center text-end space-y-3">
+                <h1 class="text-5xl tracking-wide">The WPPOOL Index</h1>
+                <h5 class=" font-messina  font-thin tracking-wide">Monitor the performance of emerging, publicly traded,
+                    financial technology companies</h5>
+            </div>
+        </div>
+        <div class="mb-8">
+            <button aria-label="down-arrow"
+                class="md:flex  bg-white  p-5 items-center justify-center  hidden text-[#2042B6] border  rounded-full h-10 w-10 absolute right-8 shadow-stone-900 shadow-lg"><i
+                    class="fa-solid fa-arrow-down"></i></button>
+        </div>
+
+    </section>
+
+
+    <!-- Chart section -->
+    <section class="mx-10 bg-white  mt-10 p-5 ">
+
+        <!-- chart navbar -->
+        <nav class=" p-4 bg-[#EFF3F6] mx-2 mb-5 rounded-lg ">
+            <div class="flex items-center justify-between">
+
+                <div class="flex items-center w-[200px] h-[34px]">
+                    <img src="/images/logo.png" alt="Company Logo" class="w-14  mr-2">
+                    <img class="w-28 -ml-2" src="/images/dark-logo.png" alt="">
+                </div>
+
+                <div class="flex items-center space-x-7">
+                    <button aria-label="Share"
+                        class="md:flex items-center justify-center hidden text-black border border-black rounded-full h-10 w-10 p-5">
+                        <i class="fa-solid fa-share-nodes text-xl"></i>
+                    </button>
+                    <button class="text-black border border-black rounded-3xl text-xs p-3 md:block hidden">Download the
+                        2024
+                        Report</button>
+
+                    <button aria-label="Menu" class="flex items-center text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="inline-block h-10 w-10 stroke-current ">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+
+
+        <!-- chart body -->
+        <div class="flex flex-col md:flex-row rounded-lg overflow-hidden ">
+
+            <!-- Tab buttons container -->
+            <div class="w-full md:w-3/12 bg-[#EFF3F6] rounded-md p-2 mx-2">
+                <div class="flex md:flex-col flex-row gap-3 overflow-x-auto">
+                    <button id="tab1-btn" class="tab-button p-2 flex items-center justify-between md:mx-2 mx-1">
+                        The Index<span class="tab-icon md:block hidden">+</span>
+                    </button>
+                    <button id="tab2-btn" class="tab-button p-2 flex items-center justify-between md:mx-2 mx-1">
+                        <span class="lg:block md:hidden hidden">The Index</span> Tab Two<span
+                            class="tab-icon md:block hidden">+</span>
+                    </button>
+                    <button id="tab3-btn" class="tab-button p-2 flex items-center justify-between md:mx-2 mx-1">
+                        <span class="lg:block md:hidden hidden">The Index</span> Tab Three<span
+                            class="tab-icon md:block hidden">+</span>
+                    </button>
+                    <button id="tab4-btn" class="tab-button p-2 flex items-center justify-between md:mx-2 mx-1">
+                        <span class="lg:block md:hidden hidden">The Index</span> Tab Four<span
+                            class="tab-icon md:block hidden">+</span>
+                    </button>
+                    <button id="tab5-btn" class="tab-button p-2 flex items-center justify-between md:mx-2 mx-1">
+                        <span class="lg:block md:hidden hidden">The Index</span> Tab Five<span
+                            class="tab-icon md:block hidden">+</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab content container -->
+            <div class="w-full md:w-9/12 p-4">
+
+
+                <!-- Tab-1 content -->
+                <div id="tab1" class="tab-content flex flex-col">
+
+                    <!-- Title -->
+                    <div class="flex mb-2 ml-2">
+                        <h1 class="parallelogram border border-black md:block hidden"></h1>
+                        <p class="text-3xl font-nantes ml-3">The WPPOOL Index</p>
+                    </div>
+
+
+                    <!-- Index part -->
+                    <div class="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 items-center -ml-2">
+                        <div
+                            class="flex justify-between item-center xl:gap-10 lg:gap-2 md:gap-10 bg-[#F3F3F3] p-2 px-2 rounded-lg h-12">
+                            <h1 class="text-[#FC714D] xl:text-2xl lg:text-xl md:text-2xl font-nantes">+66.2%</h1>
+                            <p class="border-r-4 border-[#FC714D] pr-2 text-xs">WPPOOL <br> Index</p>
+                        </div>
+                        <div
+                            class="flex justify-between item-center xl:gap-10 lg:gap-2 md:gap-10 bg-[#F3F3F3] p-2 px-2 rounded-lg h-12">
+                            <h1 class="text-[#615DE3] xl:text-2xl lg:text-xl md:text-2xl font-nantes">+26.6%</h1>
+                            <p class="border-r-4 border-[#615DE3] pr-2 text-xs">Goolge <br> Index</p>
+                        </div>
+                        <div
+                            class="flex justify-between item-center xl:gap-10 lg:gap-2 md:gap-10 bg-[#F3F3F3] p-2 px-2 rounded-lg h-12">
+                            <h1 class="text-[#7CA63A] xl:text-2xl lg:text-xl md:text-2xl font-nantes">+34.1%</h1>
+                            <p class="border-r-4 border-[#7CA63A] pr-2 text-xs">Microsoft <br> Index</p>
+                        </div>
+                        <div
+                            class="flex justify-between item-center xl:gap-10 lg:gap-2 md:gap-10 bg-[#F3F3F3] p-2 px-2 rounded-lg h-12">
+                            <h1 class="text-[#6F34A1] xl:text-2xl lg:text-xl md:text-2xl font-nantes">+17%</h1>
+                            <p class="border-r-4 border-[#6F34A1] pr-2 text-xs">Twitter<br> Index</p>
+                        </div>
+                    </div>
+
+
+                    <!-- selector button -->
+                    <div class="flex lg:flex-row flex-col justify-between items-center">
+                        <div class="flex md:flex-row flex-col gap-4">
+                            <select title="sector"
+                                class="select bg-[#2042B6] text-white btn-sm w-44 rounded-3xl mt-5 border-none focus:outline-none ">
+                                <option disabled selected>Sectors</option>
+                            </select>
+                            <select title="ipo"
+                                class="select bg-[#2042B6] text-white btn-sm w-44 rounded-3xl mt-5 border-none focus:outline-none ">
+                                <option disabled selected>Types of IPO</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div role="tablist" class="tabs bg-[#EFF3F6] rounded-3xl mt-5 flex items-center h-8">
+                                <a role="tab" class="tab">1Y</a>
+                                <a role="tab" class="tab">YTD</a>
+                                <a role="tab" class="tab tab-active bg-[#2042B6] rounded-2xl text-white my-1 h-7">6M</a>
+                                <a role="tab" class="tab">1M</a>
+                                <a role="tab" class="tab">1W</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full p-4 bg-white  rounded-lg shadow-lg">
+                        <canvas id="myChart" class="w-full h-96"></canvas>
+                    </div>
+
+                    <!-- tab2 content -->
+                </div>
+                <div id="tab2" class="tab-content hidden">
+                    <h1 class="text-2xl font-bold">Tab 2 Content</h1>
+                    <p>Tab 2.</p>
+                </div>
+                <div id="tab3" class="tab-content hidden">
+                    <h1 class="text-2xl font-bold">Tab 3 Content</h1>
+                    <p>Tab 3.</p>
+                </div>
+                <div id="tab4" class="tab-content hidden">
+                    <h1 class="text-2xl font-bold">Tab 4 Content</h1>
+                    <p>Tab 4.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+    <!-- All companys table section-->
+    <section id="news" class="mx-4 mt-10 p-5 font-nantes  mb-8">
+        <!-- table nav-->
+        <div class="bg-white px-5 py-5 rounded-xl">
+            <div class="navbar bg-base-100 flex justify-between items-center w-full ">
+                <div class=" flex-1">
+                    <a class="md:text-3xl text-xl normal-case tracking-wide ">All Companies</a>
+                </div>
+                <div class="relative form-control  flex-1 text-black">
+                    <i
+                        class="absolute xl:left-20 lg:left-20 md:left-14 left-6  top-1/2 transform -translate-y-1/2 fa-solid fa-magnifying-glass md:ml-2 ml-0"></i>
+                    <input type="text" placeholder="Search Companies"
+                        class="input input-bordered w-9/12 pl-10 bg-[#DADADA]  placeholder-black focus:outline-none" />
+                </div>
+            </div>
+
+            <!-- table-->
+            <div class="overflow-x-auto">
+                <table class="table table-zebra ">
+                    <thead>
+                        <tr class="text-black border-none">
+                            <th>Company</th>
+                            <th>Ticker<select title="#" class="s"></select></th>
+                            <th>Vertical</th>
+                            <th>Price</th>
+                            <th>Market Cap ($B)</th>
+                            <th>Revenue Growth</th>
+                            <th>Gross Margin</th>
+                            <th>EV/Revenue</th>
+                            <th>YTD Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+
+                            <td>Adyen</td>
+                            <td>AFRM</td>
+                            <td>Payments</td>
+                            <td>$17.15</td>
+                            <td>$50.5</td>
+                            <td>49.0%</td>
+                            <td>15.8%</td>
+                            <td>6.3</td>
+                            <td>24.3%</td>
+                        </tr>
+                        <tr class="">
+
+                            <td>Affirm</td>
+                            <td>AFRM</td>
+                            <td>Lending</td>
+                            <td>$16.12</td>
+                            <td>$4.7</td>
+                            <td>32.0%</td>
+                            <td>48.7%</td>
+                            <td>4.9</td>
+                            <td>77.1%</td>
+                        </tr>
+                        <tr>
+
+                            <td>Alkami Technology</td>
+                            <td>ALKT</td>
+                            <td>B2B SaaS</td>
+                            <td>$16.27</td>
+                            <td>$1.5</td>
+                            <td>34.0%</td>
+                            <td>53.0%</td>
+                            <td>7.0</td>
+                            <td>10.0%</td>
+                        </tr>
+                        <tr>
+
+                            <td>AvidXchange</td>
+                            <td>AVDX</td>
+                            <td>Payments</td>
+                            <td>$10.21</td>
+                            <td>$2.0</td>
+                            <td>27.0%</td>
+                            <td>61.5%</td>
+                            <td>6.0</td>
+                            <td>10.5%</td>
+                        </tr>
+                        <tr>
+
+                            <td>Bakkt Holdings</td>
+                            <td>BKKT</td>
+                            <td>Wealth</td>
+                            <td>$1.32</td>
+                            <td>$0.1</td>
+                            <td>38%</td>
+                            <td>--</td>
+                            <td>0.4</td>
+                            <td>13.8%</td>
+                        </tr>
+                        <tr>
+
+                            <td>Virtu Financial Inc</td>
+                            <td>VIRT</td>
+                            <td>Wealth</td>
+                            <td>$17.0</td>
+                            <td>$3.1</td>
+                            <td>-22.0%</td>
+                            <td>38.2%</td>
+                            <td>2.6</td>
+                            <td>-17.8%</td>
+                        </tr>
+                        <tr>
+
+                            <td>Adyen</td>
+                            <td>AFRM</td>
+                            <td>Payments</td>
+                            <td>$17.15</td>
+                            <td>$50.5</td>
+                            <td>49.0%</td>
+                            <td>15.8%</td>
+                            <td>6.3</td>
+                            <td>24.3%</td>
+                        </tr>
+                        <tr>
+
+                            <td>Affirm</td>
+                            <td>AFRM</td>
+                            <td>Lending</td>
+                            <td>$16.12</td>
+                            <td>$4.7</td>
+                            <td>32.0%</td>
+                            <td>48.7%</td>
+                            <td>4.9</td>
+                            <td>77.1%</td>
+                        </tr>
+                        <tr>
+
+
+                            <td>Alkami Technology</td>
+                            <td>ALKT</td>
+                            <td>B2B SaaS</td>
+                            <td>$16.27</td>
+                            <td>$1.5</td>
+                            <td>34.0%</td>
+                            <td>53.0%</td>
+                            <td>7.0</td>
+                            <td>10.0%</td>
+                        </tr>
+                        <tr>
+
+                            <td>AvidXchange</td>
+                            <td>AVDX</td>
+                            <td>Payments</td>
+                            <td>$10.21</td>
+                            <td>$2.0</td>
+                            <td>27.0%</td>
+                            <td>61.5%</td>
+                            <td>6.0</td>
+                            <td>10.5%</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center mt-6 gap-5">
+            <button
+                class="btn bg-[#2042B6] rounded-3xl btn-sm normal-case text-white font-sans text-xs font-thin hover:bg-[#2042B6]">Download
+                ‘All Companies’ Data</button>
+            <button
+                class="btn bg-[#2042B6] rounded-3xl btn-sm normal-case text-white font-sans text-xs font-thin hover:bg-[#2042B6]">View
+                Methodology</button>
+        </div>
+
+
+    </section>
+
+
+    <!-- Potential Future Listings section-->
+    <section class="px-8 mt-16">
+
+        <div class="ml-5">
+            <h1 class="font-nantes text-3xl mb-1">Potential Future Listings</h1>
+            <p class="mb-2 ">Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
+                interdum, ac
+                aliquet
+                odio mattis. <br> Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+                himenaeos.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1  gap-5 px-3 py-5">
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-7 h-25" src="/images/Listings/stripe.png" alt="">
+            </div>
+
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-10" src="/images/Listings/klarna.png" alt="">
+            </div>
+
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-7 h-25" src="/images/Listings/plaid.png" alt="">
+            </div>
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center  text-center">
+                <div class="flex justify-center items-center xl:gap-2  lg:gap-0 md:gap-2 gap-0"><svg width="22"
+                        height="25" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.4091 12.0244L21.5568 1.07536C21.7009 0.830957 21.7009 0.586558 21.5568 0.342159C21.4127 0.146639 21.1726 0 20.9324 0H8.2527C8.01256 0 7.77241 0.146639 7.62832 0.342159L1.09635 11.6334C0.952258 11.8778 0.952258 12.1711 1.09635 12.3666L7.62832 23.6578C7.77241 23.9022 8.01256 24 8.2527 24H20.9324C21.1726 24 21.4127 23.8534 21.5568 23.6578C21.7009 23.4134 21.7009 23.169 21.5568 22.9246L15.4091 12.0244ZM14.5926 10.558L9.50146 1.4664H19.7317L14.5926 10.558ZM8.20467 2.19959L13.728 12.0244L8.20467 21.8493L2.53722 12.0244L8.20467 2.19959ZM9.50146 22.5336L14.5926 13.442L19.6837 22.5336H9.50146Z"
+                            fill="#9FA0A2" />
+                    </svg>
+                    <h1 class="text-[#9FA0A1] xl:text-2xl lg:text-xl md:text-2xl text-2xl ">
+                        <strong>checkout</strong>.com
+                    </h1>
+                </div>
+
+            </div>
+
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-10" src="/images/Listings/revolut.png" alt="">
+            </div>
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-6 mt-3 h-24 " src="/images/Listings/chime.png" alt="">
+            </div>
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-7 h-25" src="/images/Listings/n26.png" alt="">
+            </div>
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-7 h-24 mt-4" src="/images/Listings/brex.png" alt="">
+            </div>
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-7 h-24 mt-2 " src="/images/Listings/deel.png" alt="">
+            </div>
+            <div class="bg-white h-[120px] rounded-lg  flex justify-center item-center ">
+                <img class="p-8 h-25 " src="/images/Listings/gusto.png" alt="">
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- slider section -->
+    <section class="px-8 mt-16 bg-custom2">
+        <div class="ml-5 space-y-2">
+            <h1 class="font-nantes text-3xl mb-1">Potential Future Listings</h1>
+            <select title="year"
+                class="select select-bordered w-32 focus:outline-none rounded-3xl bg-[#2042B6] hover:bg-[#2042B6] text-white font-nantes text-2xl font-thin btn btn-md">
+                <option disabled selected>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+            </select>
+            <p>Click through the slides or download the report to view natively on your device.</p>
+        </div>
+        <div class="slider">
+            <div class="slider-track ">
+                <div class="slider-item">
+                    <div class="">
+                        <img class="shadow-lg shadow-slate-900" src="/images/slider-1.webp" alt="Card 1 Image">
+
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="">
+                        <img class="shadow-lg shadow-slate-900" src="/images/slider-2.webp" alt="Card 2 Image">
+
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="">
+                        <img class="shadow-lg shadow-slate-900" src="/images/slider-3.png" alt="Card 2 Image">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center flex-col sm:flex-row mt-2 pb-5 ">
+            <div class="flex justify-start items-center gap-4 sm:gap-7 ml-5 mb-4 sm:mb-0">
+                <div>
+                    <button title="prev" class="btn btn-md rounded-full bg-white text-[#2042B6] shadow-lg " id="prev"><i
+                            class="fa-solid fa-arrow-left"></i></button>
+                    <button title="next" class="btn btn-md rounded-full bg-white text-[#2042B6] shadow-lg " id="next"><i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div>
+                    <p class="text-xs hidden sm:block">Pages
+                        <select title="page" class="select shadow-lg rounded-3xl mx-1">
+                            <option disabled selected>1 and 2</option>
+                        </select> of 37
+                    </p>
+                    <p class="text-xs block sm:hidden">1 and 2 of 37</p> <!-- Show on small screens -->
+                </div>
+            </div>
+            <div class="mr-5 sm:mr-20 mb-4 sm:mb-0">
+                <button
+                    class="btn bg-[#2042B6] rounded-3xl btn-sm normal-case text-white font-sans text-xs font-thin hover:bg-[#2042B6]">
+                    Download the 2023 Report
+                </button>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <!-- stories section -->
+    <section id="story" class="mt-20 px-14 border-b-0">
+
+        <div class="mb-28">
+            <h1 class="font-nantes text-3xl mb-1">Stories & Ideas</h1>
+            <p>The latest news and updates</p>
+        </div>
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 ">
+            <div class="bg-white rounded-lg p-4 relative h-48">
+                <img class="absolute -top-20 left-4 w-40 h-40" src="/images/story-1.png" alt="">
+                <div class="pt-12 space-y-2">
+                    <p class="text-[#2042B6]">By: Sahabuddin Sagor</p>
+                    <p class="font-nantes text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        mollitia.</p>
+                    <button
+                        class="btn btn-sm normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white">Read
+                        More</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 relative h-48 md:mt-0 mt-16">
+                <img class="absolute -top-20 left-4 w-40 h-40" src="/images/story-2.png" alt="">
+                <div class="pt-12 space-y-2">
+                    <p class="text-[#2042B6]">By: Nayem Khan</p>
+                    <p class="font-nantes text-sm">Lorem ipsum dolor sit amet consectetur</p>
+                    <button
+                        class="btn btn-sm normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white">Read
+                        More</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 relative h-48 lg:mt-0 md:mt-16 mt-16">
+                <img class="absolute -top-20 left-4 w-40 h-40" src="/images/story-3.png" alt="">
+                <div class="pt-12 space-y-2">
+                    <p class="text-[#2042B6]">By: Shagor Sahabuddin</p>
+                    <p class="font-nantes text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        mollitia.</p>
+                    <button
+                        class="btn btn-sm normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white">Read
+                        More</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 relative h-48 mt-16">
+                <img class="absolute -top-20 left-4 w-40 h-40" src="/images/story-1.png" alt="">
+                <div class="pt-12 space-y-2">
+                    <p class="text-[#2042B6]">By: Sahabuddin Sagor</p>
+                    <p class="font-nantes text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        mollitia.</p>
+                    <button
+                        class="btn btn-sm normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white">Read
+                        More</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 relative h-48  mt-16">
+                <img class="absolute -top-20 left-4 w-40 h-40" src="/images/story-2.png" alt="">
+                <div class="pt-12 space-y-2">
+                    <p class="text-[#2042B6]">By: Nayem Khanr</p>
+                    <p class="font-nantes text-sm">Key Takeaways from Robotics Invest 2023</p>
+                    <button
+                        class="btn btn-sm normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white">Read
+                        More</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-4 relative h-48  mt-16">
+                <img class="absolute -top-20 left-4 w-40 h-40" src="/images/story-3.png" alt="">
+                <div class="pt-12 space-y-2">
+                    <p class="text-[#2042B6]">By: Sahabuddin Sagor</p>
+                    <p class="font-nantes text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        mollitia.</p>
+                    <button
+                        class="btn btn-sm normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white">Read
+                        More</button>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <hr class="h-px mt-20 bg-[#90B8F0] border-0  mx-12">
+
+
+    <!-- about section -->
+    <section id="about"
+        class="flex justify-between items-center bg-white rounded-lg mx-14 mt-20 lg:px-20 md:px-6 px-4 pt-5">
+        <div class="lg:space-y-2 md:space-y-1 space-y-2 md:flex-1">
+            <div class="mb-5">
+                <h1 class="font-nantes text-3xl mb-1">About WPPOOL</h1>
+                <h3 class="text-[#7D7F81] text-lg font-nantes">Investing in wppool for over 50 years</h3>
+                <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae
+                    quas
+                    vel sint commodi
+                    repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat
+                    iusto
+                    fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem.</p>
+            </div>
+            <button
+                class="btn btn-md normal-case border-none bg-[#2042B6] hover:bg-[#2042B6] rounded-3xl text-white ">Contact
+                WPPOOL</button>
+        </div>
+        <div class="flex-1 ">
+            <img class="md:block hidden" src="/images/stories-bg.png" alt="">
+        </div>
+    </section>
+
+    <hr class="h-px mt-20 bg-[#90B8F0] border-0  mx-12">
+
+    <!-- Portfolio companies section -->
+    <section id="portfolio" class="mt-14 ">
+        <h1 class="font-nantes text-3xl mb-1 ml-14">Selected WPPOOL Portfolio Companies</h1>
+
+        <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-5 p-5 ml-8">
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-1.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-2.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-3.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-4.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-5.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-6.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-7.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-8.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-9.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-4.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-11.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-12.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-13.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-14.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-15.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-16.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-17.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-1.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-2.png" alt=""></div>
+            <div class="bg-white h-28  p-5 flex items-center justify-center rounded-lg"><img class=""
+                    src="/images/companies/company-3.png" alt=""></div>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer class="bg-[#9FA0A1] mt-14 rounded-t-xl  my-10 ">
+
+        <div class="bg-base-200 text-base-content p-10 flex justify-between">
+            <div class="flex-1 ">
+                <h1 class="font-nantes text-2xl md:ml-6 ml-2">Experience remarkable <br>
+                    WordPress products with a <br>
+                    new level of power, beauty, <br>
+                    and human-centered designs.</h1>
+            </div>
+            <div class="flex-1 flex md:flex-row flex-col-reverse justify-around lg:-ml-16 md:-ml-10 ml-5">
+                <div class="flex flex-col space-y-2">
+                    <h6 class="text-[#9FA0A1]">Jump to</h6>
+
+                    <a href="#about" class="link link-hover text-[#2042B6] text-sm">About Us</a>
+                    <a href="#portfolio" class="link link-hover text-[#2042B6] text-sm">Portfolio</a>
+                    <a href="#news" class="link link-hover text-[#2042B6] text-sm">News</a>
+                    <a href="#story" class="link link-hover text-[#2042B6] text-sm">Stories</a>
+                    <a class="link link-hover text-[#2042B6] text-sm">Jobs</a>
+                    <a href="#about" class="link link-hover text-[#2042B6] text-sm">About Us</a>
+
+                </div>
+                <div>
+                    <div class="border-b-2 mb-2 pb-2">
+                        <h6 class="normal-case text-black font-semibold mb-2">Cambridge</h6>
+                        <p class="text-sm ">70728 Yost Burg,<br>
+                            North Magdaleneview,<br>
+                            UT 97952-2814</p>
+                    </div>
+                    <div class="border-b-2 mb-2 pb-2">
+                        <h6 class=" normal-case text-black font-semibold mb-2">London</h6>
+                        <p class="text-sm "> Suite 292 903 Stehr Streets,<br>
+                            Langworthtown,<br> SC 94577-9465</p>
+                    </div>
+
+                    <div class="border-b-2 mb-2 pb-2">
+                        <h6 class=" normal-case text-black font-semibold mb-2">San Francisco</h6>
+                        <p class="text-sm ">19837 Gilberto Lodge,<br>
+                            Lake Kendallville,<br>
+                            Colorado - 97392, Bhutan</p>
+                    </div>
+
+                    <div class="flex justify-start gap-5 ml-1">
+                        <i class="fa-brands fa-linkedin text-[#9FA0A1] text-xl"></i>
+                        <i class="fa-brands fa-twitter text-[#9FA0A1] text-xl"></i>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer bg-base-200 text-base-content border-base-300 px-10 -mt-20 pb-10">
+            <div class="md:w-1/2 w-full md:mt-0 mt-10">
+                <small class="text-[#9FA0A1]">©2024 Terms of Use Privacy Policy</small>
+                <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint
+                    commodi
+                    repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat
+                    iusto
+                    fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati
+                    tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa
+                    officia
+                    aut! Impedit sit sunt quaera
+                </small>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script src="chart.js"></script>
+    <script src="slider.js"></script>
+
+
+</body>
+
+</html>
